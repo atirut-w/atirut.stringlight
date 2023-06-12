@@ -4,6 +4,8 @@ extends Light3D
 
 @export var light_style: LightStyle
 
+var max_energy := light_energy
+
 var total_time := 0.0
 var threshold := 1.0 / 10.0
 var frame := 0
@@ -45,4 +47,5 @@ func _physics_process(delta: float) -> void:
 		total_time = 0
 		frame += 1
 	
-	print(light_anim[light_style][frame % light_anim[light_style].length()])
+	var brightness := (light_anim[light_style][frame % light_anim[light_style].length()]).unicode_at(0) - 97
+	light_energy = (float(brightness) / 25.0) * 2.0
