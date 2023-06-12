@@ -6,6 +6,7 @@ extends Light3D
 
 var total_time := 0.0
 var threshold := 1.0 / 10.0
+var frame := 0
 
 enum LightStyle {
 	NORMAL,
@@ -42,4 +43,6 @@ func _physics_process(delta: float) -> void:
 	total_time += delta
 	if total_time >threshold:
 		total_time = 0
-		print(total_time)
+		frame += 1
+	
+	print(light_anim[light_style][frame % light_anim[light_style].length()])
