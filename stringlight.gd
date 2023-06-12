@@ -1,0 +1,2 @@
+class_name StringLight
+extends Light3D
